@@ -7,6 +7,7 @@ const SHRINKING = 2;
 
 onready var menuScreenBackgroundMusic = $AudioStreamPlayer
 onready var fadeInAnimation = $AnimationPlayer
+onready var backgroundVideo = $VideoPlayer
 
 var currentStartButtonFontSize;
 var startButtonState;
@@ -38,3 +39,6 @@ func _process(delta):
 	
 	if menuScreenBackgroundMusic.playing == false:
 		menuScreenBackgroundMusic.play()
+	
+	if backgroundVideo.is_playing() == false:
+		backgroundVideo.play()
