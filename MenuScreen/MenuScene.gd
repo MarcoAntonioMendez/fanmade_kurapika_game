@@ -6,6 +6,7 @@ const GROWING = 1;
 const SHRINKING = 2;
 
 onready var menuScreenBackgroundMusic = $AudioStreamPlayer
+onready var fadeInAnimation = $AnimationPlayer
 
 var currentStartButtonFontSize;
 var startButtonState;
@@ -13,6 +14,7 @@ var startButtonState;
 func _ready():
 	currentStartButtonFontSize = MIN_START_BUTTON_FONT_SIZE;
 	startButtonState = GROWING;
+	fadeInAnimation.play("FadeIn")
 
 func makeStartButtonGrowOrShrink():
 	#Changing StartButton state
