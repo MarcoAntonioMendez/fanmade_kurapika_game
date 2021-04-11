@@ -30,6 +30,9 @@ func makeStartButtonGrowOrShrink():
 			currentStartButtonFontSize = currentStartButtonFontSize - 1;
 	get_node("StartButton").get("custom_fonts/font").set_size(currentStartButtonFontSize)
 
+func deleteFadeInColorRect():
+	get_node("ColorRect").queue_free()
+
 func _process(delta):
 	makeStartButtonGrowOrShrink()
 	
