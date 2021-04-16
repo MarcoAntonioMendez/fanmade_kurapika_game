@@ -5,4 +5,4 @@
 [node name="GameScene" type="Node"]
 
 [node name="Kurapika" parent="." instance=ExtResource( 1 )]
-position = Vector2( 279.307, 398.101 )
+position = Vector2( 288, 736 )
