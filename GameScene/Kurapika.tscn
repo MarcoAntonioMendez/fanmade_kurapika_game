@@ -11,6 +11,7 @@ radius = 20.4535
 radius = 20.7506
 
 [node name="Kurapika" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -18,6 +19,7 @@ texture = ExtResource( 2 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 visible = false
+collision_layer = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 1 )
