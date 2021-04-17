@@ -84,5 +84,15 @@ func move_left(delta):
 	velocity = move_and_slide(velocity)
 	decide_kurapikas_movement()
 
+# Function to detect when Kurapika gets hit eiter by a spider bullet or by
+# having contact with an enemy. The Game Ends.
+func _on_Hurtbox_area_entered(area):
+	pass # Replace with function body.
+
+
+
+
+
+
 
 
