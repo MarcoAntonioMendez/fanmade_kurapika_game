@@ -3,6 +3,7 @@ extends KinematicBody2D
 const ROTATE_RIGHT = 90
 const ROTATE_LEFT = -90
 const ROTATE_DOWN = 180
+const INITIAL_OFFSET = 70
 
 export var ACCELERATION = 1000
 export var MAX_SPEED = 1000
@@ -26,6 +27,14 @@ func _ready():
 func init(state, kurapika_position):
 	direction = state
 	global_position = kurapika_position
+	if direction == MOVE_UP:
+		global_position = global_position + Vector2(0,-INITIAL_OFFSET)
+	if direction == MOVE_DOWN:
+		global_position = global_position + Vector2(0,INITIAL_OFFSET)
+	if direction == MOVE_RIGHT:
+		global_position = global_position + Vector2(INITIAL_OFFSET,0)
+	if direction == MOVE_LEFT:
+		global_position = global_position + Vector2(-INITIAL_OFFSET,0)
 
 #
 func _physics_process(delta):
