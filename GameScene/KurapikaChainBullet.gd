@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+const ROTATE_RIGHT = 90
+const ROTATE_LEFT = -90
+const ROTATE_DOWN = 180
+
 export var ACCELERATION = 1000
 export var MAX_SPEED = 1000
 export var FRICTION = 500
@@ -29,13 +33,13 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2(0,-1) * MAX_SPEED, ACCELERATION * delta)
 	if direction == MOVE_DOWN:
 		velocity = velocity.move_toward(Vector2(0,1) * MAX_SPEED, ACCELERATION * delta)
-		rotate_bullet(180)
+		rotate_bullet(ROTATE_DOWN)
 	if direction == MOVE_RIGHT:
 		velocity = velocity.move_toward(Vector2(1,0) * MAX_SPEED, ACCELERATION * delta)
-		rotate_bullet(90)
+		rotate_bullet(ROTATE_RIGHT)
 	if direction == MOVE_LEFT:
 		velocity = velocity.move_toward(Vector2(-1,0) * MAX_SPEED, ACCELERATION * delta)
-		rotate_bullet(-90)
+		rotate_bullet(ROTATE_LEFT)
 	velocity = move_and_slide(velocity)
 
 # Rotates the bullet alongside its collision shapes
