@@ -13,6 +13,7 @@ radius = 20.7506
 [node name="Kurapika" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
+FRICTION = 3000
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

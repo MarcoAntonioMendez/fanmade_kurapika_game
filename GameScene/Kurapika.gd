@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
 export var ACCELERATION = 500
-export var MAX_SPEED = 80
+export var MAX_SPEED = 200
 export var FRICTION = 500
+
+const KurapikaChainBullet = preload("res://GameScene/KurapikaChainBullet.tscn")
 
 enum{
 	MOVE_UP,
@@ -35,11 +37,14 @@ func _physics_process(delta):
 		DEAD:
 			pass
 		STILL:
-			pass # State at the beginning of the game, kurapika does nothing.
+			# State at the beginning of the game, kurapika does nothing.
 			if get_vector_movement() != Vector2.ZERO:
 				decide_kurapikas_movement()
+	
+	if Input.is_action_just_pressed("attack") and state != STILL:
+		attack()
 
-
+# Depending on the vector movement, Kurapika's state is set
 func decide_kurapikas_movement():
 	var input_vector = get_vector_movement()
 	
@@ -88,6 +93,13 @@ func move_left(delta):
 # having contact with an enemy. The Game Ends.
 func _on_Hurtbox_area_entered(area):
 	pass # Replace with function body.
+
+# When user presses space, Kurapika attacks by shooting a dagger in the same
+# direcion Kurapika is moving
+func attack():
+	var bullet = KurapikaChainBullet.instance()
+	bullet.init(state,global_position)
+	self.get_parent().add_child(bullet)
 
 
 
