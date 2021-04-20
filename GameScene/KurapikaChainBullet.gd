@@ -4,6 +4,7 @@ const ROTATE_RIGHT = 90
 const ROTATE_LEFT = -90
 const ROTATE_DOWN = 180
 const INITIAL_OFFSET = 70
+const HitEffectScene = preload("res://Effects/HitEffect.tscn")
 
 export var ACCELERATION = 1000
 export var MAX_SPEED = 1000
@@ -57,4 +58,7 @@ func rotate_bullet(amount):
 
 # Function called when kurapika's chain bullet collides with anything
 func _on_Hitbox_area_entered(area):
+	var hitEffect = HitEffectScene.instance()
+	hitEffect.global_position = global_position
+	self.get_parent().add_child(hitEffect)
 	queue_free()
