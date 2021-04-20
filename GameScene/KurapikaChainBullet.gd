@@ -55,6 +55,6 @@ func _physics_process(delta):
 func rotate_bullet(amount):
 	self.rotation_degrees = amount
 
-
-
-
+# Function called when kurapika's chain bullet collides with anything
+func _on_Hitbox_area_entered(area):
+	queue_free()
