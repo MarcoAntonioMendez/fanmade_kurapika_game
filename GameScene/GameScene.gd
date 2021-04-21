@@ -1,13 +1,19 @@
 extends Node
 
 const CHAR_APPEARANCE_WAIT_TIME = 3
+const FIRST_CHANGE_BARRIER = 15
+const SECOND_CHANGE_BARRIER = 35
+const THIRD_CHANGE_BARRIER = 80
+const FOURTH_CHANGE_BARRIER = 150
 
 # pT= phantom troupe 
-onready var pT_member_chance_to_appear = 0.5
-onready var enemy_chance_to_appear = 0.5
-onready var friend_chance_to_appear = 0.5
+onready var pT_member_chance_to_appear = 0.4
+onready var enemy_chance_to_appear = 0.3
+onready var friend_chance_to_appear = 0.3
 
 onready var timer = $Timer
+onready var elapsed_time = 0
+onready var elapsed_seconds = 0
 
 onready var random = RandomNumberGenerator.new()
 
@@ -16,13 +22,44 @@ func _ready():
 	timer.start()
 
 func _process(delta):
-	pass
+	calculate_elapsed_time(delta)
+	# Depending on the amount of elapsed_seconds, the var for chances for 
+	# characters will change.
+	# That's why there are barriers, when a barrier is passed the vars for chances
+	# are modified.
+	
+	if elapsed_seconds >= FIRST_CHANGE_BARRIER:
+		pT_member_chance_to_appear += 0.1 
+		enemy_chance_to_appear += 0.1
+		friend_chance_to_appear += 0.1
+	
+	if elapsed_seconds >= SECOND_CHANGE_BARRIER:
+		pT_member_chance_to_appear += 0.1 
+		enemy_chance_to_appear += 0.1
+		friend_chance_to_appear += 0.1
+	
+	if elapsed_seconds >= THIRD_CHANGE_BARRIER:
+		pT_member_chance_to_appear += 0.1 
+		enemy_chance_to_appear += 0.1
+		friend_chance_to_appear += 0.1
+	
+	if elapsed_seconds >= FOURTH_CHANGE_BARRIER:
+		pT_member_chance_to_appear += 0.1 
+		enemy_chance_to_appear += 0.1
+
+# Calculates the amount of seconds that have passed since the GameScene started
+func calculate_elapsed_time(delta):
+	elapsed_time += delta
+	elapsed_seconds = fmod(elapsed_time,60)
+	
 
 # When the timer times out
 func _on_Timer_timeout():
 	random.randomize()
 	var random_number = random.randf_range(0,1)
 	
+	print("Elapsed seconds")
+	print(elapsed_seconds)
 	print("Deciding")
 	# Deciding who has to appear in the game
 	if random_number <= pT_member_chance_to_appear:
