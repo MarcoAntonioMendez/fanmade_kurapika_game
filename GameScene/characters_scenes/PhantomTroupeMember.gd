@@ -19,6 +19,8 @@ const X_POS_MAX = 488
 const Y_POS_MIN = 72
 const Y_POS_MAX = 936
 
+const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
+
 onready var phantom_troupe_member_id = 0
 onready var random = RandomNumberGenerator.new()
 onready var sprite = $Sprite
@@ -63,5 +65,7 @@ func _ready():
 
 
 func _on_Hurtbox_area_entered(area):
-	print("Muerto")
+	var deathEffect = DEATH_EFFECT_SCENE.instance()
+	deathEffect.global_position = position
+	self.get_parent().add_child(deathEffect)
 	queue_free()
