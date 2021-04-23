@@ -419,7 +419,7 @@ position = Vector2( 0, 24 )
 position = Vector2( 552, 984 )
 
 [node name="Kurapika" parent="." instance=ExtResource( 1 )]
-position = Vector2( 288, 736 )
+position = Vector2( 288, 224 )
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

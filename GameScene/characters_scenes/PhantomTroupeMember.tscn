@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameScene/characters_scenes/kortopi_head.png" type="Texture" id=2]
+[ext_resource path="res://GameScene/characters_scenes/PhantomTroupeMember.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 15.7943
+
+[node name="PhantomTroupeMember" type="KinematicBody2D"]
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 1.05946 )
+shape = SubResource( 1 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
