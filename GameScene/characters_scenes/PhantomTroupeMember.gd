@@ -34,8 +34,10 @@ onready var phantom_troupe_member_id = 0
 onready var random = RandomNumberGenerator.new()
 onready var sprite = $Sprite
 onready var timer = $Timer
+onready var body_hitbox = $Hitbox/CollisionShape2D
 
 func _ready():
+	body_hitbox.disabled = true
 	random.randomize()
 	phantom_troupe_member_id = random.randi_range(CHROLLO_ID,KORTOPI_ID)
 	match phantom_troupe_member_id:
@@ -74,12 +76,20 @@ func _ready():
 #func _process(delta):
 #	pass
 
-# Makes Kortopi shoot a spider, according to his beaheviour
-func make_kortopi_shoot():
-	var phantomTroupeBullet = PHANTOM_TROUPE_BULLET.instance()
-	phantomTroupeBullet.init(DIRECTION_UP,global_position)
-	get_parent().add_child(phantomTroupeBullet)
-
+# Makes a phantom troupe member shoot, it takes a list of number denoting direction
+# and number of bullets
+# Example:
+# List received: [1,0,0,0] -> One bullet facing DIRECTION_UP, none of the others
+#
+# List received: [1,0,1,1] ->  1 bullet for DIRECTION_UP, 1 for DIRECTION_RIGHT, 1 for DIRECTION_LEFT
+func make_phantom_troupe_member_shoot(bullets_specifications_list):
+	var direction = 0
+	for bullet in bullets_specifications_list:
+		if bullet == 1:
+			var phantomTroupeBullet = PHANTOM_TROUPE_BULLET.instance()
+			phantomTroupeBullet.init(direction,global_position)
+			get_parent().add_child(phantomTroupeBullet)
+		direction = direction + 1
 
 func _on_Hurtbox_area_entered(area):
 	var deathEffect = DEATH_EFFECT_SCENE.instance()
@@ -89,32 +99,33 @@ func _on_Hurtbox_area_entered(area):
 
 
 func _on_Timer_timeout():
+	body_hitbox.disabled = false
 	match phantom_troupe_member_id:
 		CHROLLO_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,1,1,1])
 		FEITAN_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,1,0,1])
 		UVOGIN_ID:
-			pass
+			make_phantom_troupe_member_shoot([0,1,1,1])
 		PHINKS_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,0,1,1])
 		SHALNARK_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,1,1,0])
 		BONOLENOV_ID:
-			pass
+			make_phantom_troupe_member_shoot([0,1,0,1])
 		NOBUNAGA_ID:
-			pass
+			make_phantom_troupe_member_shoot([0,1,1,0])
 		FRANKLIN_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,0,0,1])
 		MACHI_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,1,0,0])
 		SHIZUKU_ID:
-			pass
+			make_phantom_troupe_member_shoot([1,0,1,0])
 		PAKUNODA_ID:
-			pass
+			make_phantom_troupe_member_shoot([0,1,0,0])
 		KALLUTO_ID:
-			pass
+			make_phantom_troupe_member_shoot([0,0,1,0])
 		KORTOPI_ID:
-			make_kortopi_shoot()
+			make_phantom_troupe_member_shoot([1,0,0,0])
 	timer.set_wait_time(SHOOTING_WAIT_TIME)
 	timer.start()
