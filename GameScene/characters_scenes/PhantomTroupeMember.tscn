@@ -6,7 +6,8 @@
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 15.7943
+radius = 24.9322
+height = 13.1134
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 15.1321
@@ -20,11 +21,10 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
-visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( 0, 1.05946 )
+position = Vector2( 0, 0.927027 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 4 )]
