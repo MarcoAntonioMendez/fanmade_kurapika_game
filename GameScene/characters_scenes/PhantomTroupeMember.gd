@@ -18,12 +18,22 @@ const X_POS_MIN = 40
 const X_POS_MAX = 488
 const Y_POS_MIN = 72
 const Y_POS_MAX = 936
+const SHOOTING_WAIT_TIME = 1
+
+enum{
+	DIRECTION_UP,
+	DIRECTION_DOWN,
+	DIRECTION_RIGHT,
+	DIRECTION_LEFT
+}
 
 const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
+const PHANTOM_TROUPE_BULLET = preload("res://GameScene/PhantomTroupeBullet.tscn")
 
 onready var phantom_troupe_member_id = 0
 onready var random = RandomNumberGenerator.new()
 onready var sprite = $Sprite
+onready var timer = $Timer
 
 func _ready():
 	random.randomize()
@@ -58,10 +68,17 @@ func _ready():
 	
 	random.randomize()
 	position = Vector2(random.randi_range(X_POS_MIN,X_POS_MAX),random.randi_range(Y_POS_MIN,Y_POS_MAX))
+	timer.set_wait_time(SHOOTING_WAIT_TIME)
+	timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+# Makes Kortopi shoot a spider, according to his beaheviour
+func make_kortopi_shoot():
+	var phantomTroupeBullet = PHANTOM_TROUPE_BULLET.instance()
+	phantomTroupeBullet.init(DIRECTION_UP,global_position)
+	get_parent().add_child(phantomTroupeBullet)
 
 
 func _on_Hurtbox_area_entered(area):
@@ -69,3 +86,35 @@ func _on_Hurtbox_area_entered(area):
 	deathEffect.global_position = position
 	self.get_parent().add_child(deathEffect)
 	queue_free()
+
+
+func _on_Timer_timeout():
+	match phantom_troupe_member_id:
+		CHROLLO_ID:
+			pass
+		FEITAN_ID:
+			pass
+		UVOGIN_ID:
+			pass
+		PHINKS_ID:
+			pass
+		SHALNARK_ID:
+			pass
+		BONOLENOV_ID:
+			pass
+		NOBUNAGA_ID:
+			pass
+		FRANKLIN_ID:
+			pass
+		MACHI_ID:
+			pass
+		SHIZUKU_ID:
+			pass
+		PAKUNODA_ID:
+			pass
+		KALLUTO_ID:
+			pass
+		KORTOPI_ID:
+			make_kortopi_shoot()
+	timer.set_wait_time(SHOOTING_WAIT_TIME)
+	timer.start()
