@@ -63,3 +63,10 @@ func _on_Hitbox_area_entered(area):
 	hitEffect.global_position = global_position
 	self.get_parent().add_child(hitEffect)
 	queue_free()
+
+
+func _on_Hurtbox_area_entered(area):
+	var hitEffect = HitEffectScene.instance()
+	hitEffect.global_position = global_position
+	self.get_parent().add_child(hitEffect)
+	queue_free()
