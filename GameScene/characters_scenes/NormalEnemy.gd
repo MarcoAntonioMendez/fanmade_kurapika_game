@@ -17,13 +17,6 @@ const Y_POS_MAX = 936
 const SHOOTING_WAIT_TIME = 1.5
 const TOTAL_LIVE_TIME = 6
 
-enum{
-	DIRECTION_UP,
-	DIRECTION_DOWN,
-	DIRECTION_RIGHT,
-	DIRECTION_LEFT
-}
-
 const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
 const PHANTOM_TROUPE_BULLET = preload("res://GameScene/PhantomTroupeBullet.tscn")
 
