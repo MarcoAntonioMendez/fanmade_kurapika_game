@@ -7,11 +7,12 @@ const THIRD_CHANGE_BARRIER = 80
 const FOURTH_CHANGE_BARRIER = 150
 
 const PHANTOM_TROUPE_MEMBER_SCENE = preload("res://GameScene/characters_scenes/PhantomTroupeMember.tscn")
+const NORMAL_ENEMY_SCENE = preload("res://GameScene/characters_scenes/NormalEnemy.tscn")
 
 # pT= phantom troupe 
-onready var pT_member_chance_to_appear = 0.4
-onready var enemy_chance_to_appear = 0.3
-onready var friend_chance_to_appear = 0.3
+onready var pT_member_chance_to_appear = 0.3
+onready var enemy_chance_to_appear = 0.2
+onready var friend_chance_to_appear = 0.2
 
 onready var timer = $Timer
 onready var elapsed_time = 0
@@ -60,6 +61,10 @@ func make_a_phantom_troupe_member_appear():
 	var phantom_troupe_member = PHANTOM_TROUPE_MEMBER_SCENE.instance()
 	add_child(phantom_troupe_member)
 
+# Creates a normal enemy
+func make_a_normal_enemy_appear():
+	var normal_enemy = NORMAL_ENEMY_SCENE.instance()
+	add_child(normal_enemy)
 
 # When the timer times out
 func _on_Timer_timeout():
@@ -73,8 +78,7 @@ func _on_Timer_timeout():
 	if random_number <= pT_member_chance_to_appear:
 		make_a_phantom_troupe_member_appear()
 	if random_number <= enemy_chance_to_appear:
-		#print("make an enemy appear")
-		pass
+		make_a_normal_enemy_appear()
 	if random_number <= friend_chance_to_appear:
 		#print("make a friend appear")
 		pass
