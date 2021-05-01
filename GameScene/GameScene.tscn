@@ -499,3 +499,4 @@ text = "Exit"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pause/ContinueButton" to="CanvasLayer/Pause" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/ExitButton" to="." method="_on_ExitButton_pressed"]
