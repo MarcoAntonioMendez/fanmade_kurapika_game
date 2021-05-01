@@ -71,3 +71,7 @@ func _on_RestartButton_pressed():
 func _on_ExitButton_pressed():
 	pause_node.pause_unpause_game()
 	get_tree().change_scene("res://MenuScreen/MenuScene.tscn")
+
+
+func _on_PauseButton_pressed():
+	pause_node.pause_unpause_game()
