@@ -59,8 +59,4 @@ func _on_Timer_timeout():
 	timer.set_wait_time(CHAR_APPEARANCE_WAIT_TIME)
 	timer.start()
 
-
-
-
-
-
+# When the button

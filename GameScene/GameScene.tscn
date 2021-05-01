@@ -494,3 +494,4 @@ margin_bottom = 512.0
 theme = SubResource( 6 )
 text = "Exit"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Pause/ContinueButton" to="CanvasLayer/Pause" method="_on_ContinueButton_pressed"]
