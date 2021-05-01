@@ -485,6 +485,9 @@ margin_right = 448.0
 margin_bottom = 416.0
 theme = SubResource( 4 )
 text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Pause"]
 margin_left = 128.0
@@ -495,3 +498,4 @@ theme = SubResource( 6 )
 text = "Exit"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pause/ContinueButton" to="CanvasLayer/Pause" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/RestartButton" to="." method="_on_RestartButton_pressed"]

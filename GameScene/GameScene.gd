@@ -16,6 +16,7 @@ onready var elapsed_time = 0
 onready var elapsed_seconds = 0
 onready var first_phantom_troupe_member = false
 onready var random = RandomNumberGenerator.new()
+onready var pause_node = $CanvasLayer/Pause
 
 func _ready():
 	timer.set_wait_time(CHAR_APPEARANCE_WAIT_TIME)
@@ -60,3 +61,8 @@ func _on_Timer_timeout():
 	timer.start()
 
 # When the button
+
+# When the restart button is pressed, the game restarts.
+func _on_RestartButton_pressed():
+	pause_node.pause_unpause_game()
+	get_tree().reload_current_scene()
