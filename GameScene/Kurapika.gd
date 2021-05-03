@@ -5,6 +5,7 @@ export var MAX_SPEED = 200
 export var FRICTION = 500
 
 const KurapikaChainBullet = preload("res://GameScene/KurapikaChainBullet.tscn")
+const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
 
 enum{
 	MOVE_UP,
@@ -92,6 +93,9 @@ func move_left(delta):
 # Function to detect when Kurapika gets hit eiter by a spider bullet or by
 # having contact with an enemy. The Game Ends.
 func _on_Hurtbox_area_entered(area):
+	var deathEffect = DEATH_EFFECT_SCENE.instance()
+	deathEffect.global_position = position
+	self.get_parent().add_child(deathEffect)
 	get_parent().activate_lost_state()
 	queue_free()
 
