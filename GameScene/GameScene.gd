@@ -19,6 +19,7 @@ onready var random = RandomNumberGenerator.new()
 onready var pause_node = $CanvasLayer/Pause
 onready var score = 0
 onready var scoreLabel = $ScoreLabel
+onready var gameOverLabel = $GameOverLabel
 
 func _ready():
 	scoreLabel.text = str(score)
@@ -80,6 +81,40 @@ func _on_ExitButton_pressed():
 	pause_node.pause_unpause_game()
 	get_tree().change_scene("res://MenuScreen/MenuScene.tscn")
 
-
+# Pauses the game
 func _on_PauseButton_pressed():
 	pause_node.pause_unpause_game()
+
+# Reads the content of the score file and returns it
+func read_score_file():
+	var file = File.new()
+	file.open("res://GameScene/user_score_file.dat", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return str(content)
+
+# Updates the content of the score file
+func update_score_file(new_score):
+	var file = File.new()
+	file.open("res://GameScene/user_score_file.dat", File.WRITE)
+	file.store_string(new_score)
+	file.close()
+
+# This function is called when Kurapika dies
+func activate_lost_state():
+	print("OLD SCORE")
+	var old_score = int(read_score_file())
+	print(old_score)
+	print("NEW_SCORE")
+	print(score)
+	
+	if score > old_score:
+		update_score_file(str(score))
+	gameOverLabel.visible = true
+
+
+
+
+
+
+

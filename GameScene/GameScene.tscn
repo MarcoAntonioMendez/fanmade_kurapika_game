@@ -30,7 +30,7 @@ font_data = ExtResource( 5 )
 default_font = SubResource( 5 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 60
+size = 92
 font_data = ExtResource( 5 )
 
 [sub_resource type="Theme" id=8]
@@ -529,6 +529,19 @@ margin_right = 384.0
 margin_bottom = 96.0
 theme = SubResource( 8 )
 text = "Score"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = 408.0
+margin_right = 519.0
+margin_bottom = 500.0
+theme = SubResource( 8 )
+text = "Game Over"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
