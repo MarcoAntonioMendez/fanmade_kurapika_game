@@ -5,6 +5,7 @@ const FIRST_CHANGE_BARRIER = 15
 const SECOND_CHANGE_BARRIER = 35
 const THIRD_CHANGE_BARRIER = 80
 const FOURTH_CHANGE_BARRIER = 150
+const TIME_GAME_OVER_TAG_SHOULD_BE_PRESENT = 4
 
 const PHANTOM_TROUPE_MEMBER_SCENE = preload("res://GameScene/characters_scenes/PhantomTroupeMember.tscn")
 
@@ -12,6 +13,7 @@ const PHANTOM_TROUPE_MEMBER_SCENE = preload("res://GameScene/characters_scenes/P
 onready var pT_member_chance_to_appear = 0.5
 
 onready var timer = $Timer
+onready var gameOverTimer = $GameOverTimer
 onready var elapsed_time = 0
 onready var elapsed_seconds = 0
 onready var first_phantom_troupe_member = false
@@ -108,13 +110,15 @@ func activate_lost_state():
 	print("NEW_SCORE")
 	print(score)
 	
+	# Updating score file
 	if score > old_score:
 		update_score_file(str(score))
 	gameOverLabel.visible = true
+	
+	# Starting gameOverTimer
+	gameOverTimer.set_wait_time(TIME_GAME_OVER_TAG_SHOULD_BE_PRESENT)
+	gameOverTimer.start()
 
-
-
-
-
-
-
+# When GameOverTimer times out, next scene is loaded, GameOverScene
+func _on_GameOverTimer_timeout():
+	get_tree().change_scene("res://GameOverScene/GameOverScene.tscn")

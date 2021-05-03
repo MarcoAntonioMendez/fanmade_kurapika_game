@@ -546,8 +546,11 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameOverTimer" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pause/ContinueButton" to="CanvasLayer/Pause" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
