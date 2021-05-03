@@ -95,6 +95,7 @@ func _on_Hurtbox_area_entered(area):
 	var deathEffect = DEATH_EFFECT_SCENE.instance()
 	deathEffect.global_position = position
 	self.get_parent().add_child(deathEffect)
+	self.get_parent().update_score()
 	queue_free()
 
 

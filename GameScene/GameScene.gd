@@ -17,8 +17,11 @@ onready var elapsed_seconds = 0
 onready var first_phantom_troupe_member = false
 onready var random = RandomNumberGenerator.new()
 onready var pause_node = $CanvasLayer/Pause
+onready var score = 0
+onready var scoreLabel = $ScoreLabel
 
 func _ready():
+	scoreLabel.text = str(score)
 	timer.set_wait_time(CHAR_APPEARANCE_WAIT_TIME)
 	timer.start()
 
@@ -60,7 +63,12 @@ func _on_Timer_timeout():
 	timer.set_wait_time(CHAR_APPEARANCE_WAIT_TIME)
 	timer.start()
 
-# When the button
+
+# Called to update the score
+func update_score():
+	score = score + 1
+	scoreLabel.text = str(score)
+
 
 # When the restart button is pressed, the game restarts.
 func _on_RestartButton_pressed():
