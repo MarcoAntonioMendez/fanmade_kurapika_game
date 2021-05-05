@@ -29,6 +29,19 @@ enum{
 
 const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
 const PHANTOM_TROUPE_BULLET = preload("res://GameScene/PhantomTroupeBullet.tscn")
+var chrollo_sprite = preload("res://GameScene/characters_scenes/chrollo_head.png")
+var feitan_sprite = preload("res://GameScene/characters_scenes/feitan_head.png")
+var uvogin_sprite = preload("res://GameScene/characters_scenes/uvogin_head.png")
+var phinks_sprite = preload("res://GameScene/characters_scenes/phinks_head.png")
+var shalnark_sprite = preload("res://GameScene/characters_scenes/shalnark_head.png")
+var bonolenov_sprite = preload("res://GameScene/characters_scenes/bonolenov_head.png")
+var nobunaga_sprite = preload("res://GameScene/characters_scenes/nobunaga_head.png")
+var franklin_sprite = preload("res://GameScene/characters_scenes/franklin_head.png")
+var machi_sprite = preload("res://GameScene/characters_scenes/machi_head.png")
+var shizuku_sprite = preload("res://GameScene/characters_scenes/shizuku_head.png")
+var pakunoda_sprite = preload("res://GameScene/characters_scenes/pakunoda_head.png")
+var kalluto_sprite = preload("res://GameScene/characters_scenes/kalluto_head.png")
+var kortopi_sprite = preload("res://GameScene/characters_scenes/kortopi_head.png")
 
 onready var phantom_troupe_member_id = 0
 onready var random = RandomNumberGenerator.new()
@@ -42,31 +55,31 @@ func _ready():
 	phantom_troupe_member_id = random.randi_range(CHROLLO_ID,KORTOPI_ID)
 	match phantom_troupe_member_id:
 		CHROLLO_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/chrollo_head.png")
+			sprite.texture = chrollo_sprite
 		FEITAN_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/feitan_head.png")
+			sprite.texture = feitan_sprite
 		UVOGIN_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/uvogin_head.png")
+			sprite.texture = uvogin_sprite
 		PHINKS_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/phinks_head.png")
+			sprite.texture = phinks_sprite
 		SHALNARK_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/shalnark_head.png")
+			sprite.texture = shalnark_sprite
 		BONOLENOV_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/bonolenov_head.png")
+			sprite.texture = bonolenov_sprite
 		NOBUNAGA_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/nobunaga_head.png")
+			sprite.texture = nobunaga_sprite
 		FRANKLIN_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/franklin_head.png")
+			sprite.texture = franklin_sprite
 		MACHI_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/machi_head.png")
+			sprite.texture = machi_sprite
 		SHIZUKU_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/shizuku_head.png")
+			sprite.texture = shizuku_sprite
 		PAKUNODA_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/pakunoda_head.png")
+			sprite.texture = pakunoda_sprite
 		KALLUTO_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/kalluto_head.png")
+			sprite.texture = kalluto_sprite
 		KORTOPI_ID:
-			sprite.texture = load("res://GameScene/characters_scenes/kortopi_head.png")
+			sprite.texture = kortopi_sprite
 	
 	random.randomize()
 	position = Vector2(random.randi_range(X_POS_MIN,X_POS_MAX),random.randi_range(Y_POS_MIN,Y_POS_MAX))
