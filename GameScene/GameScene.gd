@@ -102,17 +102,33 @@ func update_score_file(new_score):
 	file.store_string(new_score)
 	file.close()
 
+# Reads the content of the max_score_updated file and returns it
+func read_max_score_updater_file():
+	var file = File.new()
+	file.open("res://GameScene/was_max_score_updated.dat", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return str(content)
+
+# Updates the content of the max_score_updated file
+func update_max_score_updated_file(value):
+	var file = File.new()
+	file.open("was_max_score_updated.dat", File.WRITE)
+	file.store_string(value)
+	file.close()
+
 # This function is called when Kurapika dies
 func activate_lost_state():
-	print("OLD SCORE")
 	var old_score = int(read_score_file())
-	print(old_score)
-	print("NEW_SCORE")
-	print(score)
 	
 	# Updating score file
 	if score > old_score:
 		update_score_file(str(score))
+		print("New Best Score")
+		update_max_score_updated_file("true")
+	else:
+		print("No New Best Score")
+		update_max_score_updated_file("false")
 	gameOverLabel.visible = true
 	
 	# Starting gameOverTimer
