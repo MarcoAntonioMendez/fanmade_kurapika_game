@@ -16,7 +16,7 @@ const KORTOPI_ID = 13
 
 const X_POS_MIN = 40
 const X_POS_MAX = 488
-const Y_POS_MIN = 72
+const Y_POS_MIN = 128
 const Y_POS_MAX = 936
 const SHOOTING_WAIT_TIME = 1.2
 
