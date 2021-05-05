@@ -113,13 +113,24 @@ func read_max_score_updater_file():
 # Updates the content of the max_score_updated file
 func update_max_score_updated_file(value):
 	var file = File.new()
-	file.open("was_max_score_updated.dat", File.WRITE)
+	file.open("res://GameScene/was_max_score_updated.dat", File.WRITE)
+	file.store_string(value)
+	file.close()
+
+# Updates the content of the last_score file
+func update_last_score_file(value):
+	var file = File.new()
+	file.open("res://GameScene/last_score.dat", File.WRITE)
 	file.store_string(value)
 	file.close()
 
 # This function is called when Kurapika dies
 func activate_lost_state():
+	# Reading current best score
 	var old_score = int(read_score_file())
+	
+	# Writing score gotten
+	update_last_score_file(str(score))
 	
 	# Updating score file
 	if score > old_score:

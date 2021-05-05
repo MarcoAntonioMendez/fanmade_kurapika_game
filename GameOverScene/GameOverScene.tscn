@@ -1,34 +1,49 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Mayan.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GameOverScene/game_over_background_video.ogv" type="VideoStream" id=2]
+[ext_resource path="res://GameOverScene/GameOverScene.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 61
+size = 70
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
 [node name="GameOverScene" type="Node"]
+script = ExtResource( 3 )
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 margin_left = -320.0
 margin_right = 896.0
 margin_bottom = 1032.0
 stream = ExtResource( 2 )
+volume_db = -80.0
 autoplay = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="ScoreTextLabel" type="Label" parent="."]
 margin_top = 256.0
 margin_right = 576.0
 margin_bottom = 320.0
 theme = SubResource( 2 )
+custom_colors/font_color = Color( 0.752941, 0, 0, 1 )
 text = "Your Score: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_top = 328.0
+margin_right = 576.0
+margin_bottom = 392.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 0.870588, 0, 0, 1 )
+text = "0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
