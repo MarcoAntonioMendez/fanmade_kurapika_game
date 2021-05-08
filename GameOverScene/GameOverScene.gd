@@ -32,7 +32,15 @@ func read_custom_file(file_path):
 	file.close()
 	return str(content)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+# When TryAgainButton is pressed, it starts the GameScene
+func _on_TryAgainButton_pressed():
+	get_tree().change_scene("res://GameScene/GameScene.tscn")
+
+
+# When MainMenuButton is pressed, it starts the MenuScene
+func _on_MainMenuButton_pressed():
+	get_tree().change_scene("res://MenuScreen/MenuScene.tscn")
