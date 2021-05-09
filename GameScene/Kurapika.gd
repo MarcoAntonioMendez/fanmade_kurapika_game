@@ -7,6 +7,8 @@ export var FRICTION = 500
 const KurapikaChainBullet = preload("res://GameScene/KurapikaChainBullet.tscn")
 const DEATH_EFFECT_SCENE = preload("res://Effects/DeathEffect.tscn")
 
+onready var chain_bullet_sfx = $ChainBulletSfx
+
 enum{
 	MOVE_UP,
 	MOVE_DOWN,
@@ -104,6 +106,7 @@ func _on_Hurtbox_area_entered(area):
 func attack():
 	var bullet = KurapikaChainBullet.instance()
 	bullet.init(state,global_position)
+	chain_bullet_sfx.play()
 	self.get_parent().add_child(bullet)
 
 
