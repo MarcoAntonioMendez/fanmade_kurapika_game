@@ -109,6 +109,7 @@ func _on_Hurtbox_area_entered(area):
 	deathEffect.global_position = position
 	self.get_parent().add_child(deathEffect)
 	self.get_parent().update_score()
+	self.get_parent().play_phantom_troupe_member_death_sfx()
 	queue_free()
 
 

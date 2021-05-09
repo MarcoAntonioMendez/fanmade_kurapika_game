@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/phantom_troupe_member_dying_sfx.wav-29ff7400d253e1f1a52669f7503e4d1e.sample"
+
+[deps]
+
+source_file="res://Sfx/phantom_troupe_member_dying_sfx.wav"
+dest_files=[ "res://.import/phantom_troupe_member_dying_sfx.wav-29ff7400d253e1f1a52669f7503e4d1e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

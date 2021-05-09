@@ -22,6 +22,7 @@ onready var pause_node = $CanvasLayer/Pause
 onready var score = 0
 onready var scoreLabel = $ScoreLabel
 onready var gameOverLabel = $GameOverLabel
+onready var phantomTroupeMemberDeathSfx = $PhantomTroupeMemberDeathSfx
 
 func _ready():
 	scoreLabel.text = str(score)
@@ -149,3 +150,7 @@ func activate_lost_state():
 # When GameOverTimer times out, next scene is loaded, GameOverScene
 func _on_GameOverTimer_timeout():
 	get_tree().change_scene("res://GameOverScene/GameOverScene.tscn")
+
+#
+func play_phantom_troupe_member_death_sfx():
+	phantomTroupeMemberDeathSfx.play()
