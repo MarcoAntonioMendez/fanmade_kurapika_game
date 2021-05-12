@@ -23,6 +23,7 @@ onready var score = 0
 onready var scoreLabel = $ScoreLabel
 onready var gameOverLabel = $GameOverLabel
 onready var phantomTroupeMemberDeathSfx = $PhantomTroupeMemberDeathSfx
+onready var kurapikaBulletTouchingSomethingSfx = $KurapikaBulletTouchingSomethingSfx
 
 func _ready():
 	scoreLabel.text = str(score)
@@ -154,3 +155,7 @@ func _on_GameOverTimer_timeout():
 #
 func play_phantom_troupe_member_death_sfx():
 	phantomTroupeMemberDeathSfx.play()
+
+func play_kurapika_bullet_touching_something():
+	kurapikaBulletTouchingSomethingSfx.play()
+

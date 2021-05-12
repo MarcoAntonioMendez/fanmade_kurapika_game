@@ -60,5 +60,6 @@ func rotate_bullet(amount):
 func _on_Hitbox_area_entered(area):
 	var hitEffect = HitEffectScene.instance()
 	hitEffect.global_position = global_position
+	self.get_parent().play_kurapika_bullet_touching_something()
 	self.get_parent().add_child(hitEffect)
 	queue_free()

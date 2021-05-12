@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kurapikas_bullet_touching_something.wav-e1f490256b24135298d0eed1d78371d9.sample"
+
+[deps]
+
+source_file="res://Sfx/kurapikas_bullet_touching_something.wav"
+dest_files=[ "res://.import/kurapikas_bullet_touching_something.wav-e1f490256b24135298d0eed1d78371d9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
